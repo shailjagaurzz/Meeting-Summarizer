@@ -12,6 +12,18 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10kb' }));
 
+const path = require('path');
+
+// Serve static files from the React frontend build
+app.use(express.static(path.join(__dirname, '../client/build')));
+
+// Catch-all handler to serve React's index.html for any other route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+});
+
+
+
 
 // Email validation helper
 function validateEmail(email) {

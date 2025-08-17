@@ -17,10 +17,11 @@ function App() {
     setIsLoading(true);
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/summary/generate', 
-        { transcript, customPrompt },
-        { timeout: 30000 }
-      );
+      'https://meeting-summarizer-u7yd.onrender.com/api/summary/generate', 
+      { transcript, customPrompt },
+      { timeout: 30000 }
+);
+
       setSummary(response.data.data.summary);
     } catch (error) {
       console.error('API Error:', error.response?.data || error);
@@ -36,14 +37,15 @@ function App() {
     setIsSendingEmail(true);
     try {
       await axios.post(
-        'http://localhost:5000/api/summary/send-email', 
-        {
-          to: emailRecipient,
-          subject: 'Meeting Summary',
-          summary
-        },
-        { timeout: 30000 }
-      );
+  'https://meeting-summarizer-u7yd.onrender.com/api/summary/send-email', 
+  {
+    to: emailRecipient,
+    subject: 'Meeting Summary',
+    summary
+  },
+  { timeout: 30000 }
+);
+
       alert('Email sent successfully!');
     } catch (error) {
       console.error('Email Error:', error.response?.data || error);
