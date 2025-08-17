@@ -1,0 +1,13 @@
+# Ignore ALL .env files in ANY subfolder
+
+*.env
+
+
+# Ignore node_modules
+node_modules/
+
+# System files
+.DS_Store
+.idea/
+.vscode/
+
